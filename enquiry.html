@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Ramson Engineers</title>
+    <meta name="description" content="  ">
+    <meta name="keywords" content="   ">
+    <style>
+        .about {
+            text-align: center;
+        }
+
+        .readmore {
+            background-color: green;
+            color: white;
+            border: green solid;
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .readmore:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        .products {
+            text-align: center;
+        }
+
+        .op {
+            text-decoration: none;
+            color: black;
+        }
+
+        .op:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        .viewall {
+            background-color: green;
+            color: white;
+            border: green solid;
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .viewall:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding-right: 75px;
+            height: 300px;
+            text-align: right;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .columnmain {
+            float: left;
+            width: 50%;
+
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .con {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href=index.php>Ramson Engineers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link active" href=index.php>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=about.html>About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href=procate.html id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </a>
+                    <div class="dropdown-menu bg-light " aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href=valves.html>Valves</a>
+                        <a class="dropdown-item" href=strainers.html>Strainers</a>
+                        <a class="dropdown-item" href=Guages.html>Guages</a>
+                        <a class="dropdown-item" href=steamtraps.html>Steam Traps</a>
+                        <a class="dropdown-item" href=procate.html>View All</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=enquiry.html>Enquiry</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=contact.html>Contact Us</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="form my-4">
+        <div class="container">
+            <form>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Joe Smith">
+                    <label for="floatingInput">Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <label for="floatingInput">Email </label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="tel" class="form-control" id="phone" placeholder="99999 99999">
+                    <label for="floatingPassword">Phone</label>
+                </div>
+
+                <div class="form-floating">
+                    <textarea class="form-control my-3" placeholder="Describe the enquiry here" id="desc"
+                        style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" onclick="sendEmail(event)"> Submit </button>
+
+                <button type="reset" class="btn btn-outline-dark mx-4">Reset</button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        name = document.getElementById("name").value
+        email = document.getElementById("email").value
+        phone = document.getElementById("phone").value
+        description = document.getElementById("desc").value
+        function sendEmail(event) {
+            event.preventDefault();
+            Email.send({
+                SecureToken: "6289dade-277b-4d05-9810-007ed6a04ceb",
+                To: "developers.ramson@gmail.com",
+                From: email,
+                Subject: `New Enquiry  from ${name}}`,
+
+                Body: `<p><b>Name: </b>${name}\n</p>
+            <p><b>Email: </b>${email}\n</p>
+            <p> <b>Phone: </b>${phone}\n</p>
+            <p> <b>Description: </b>${desc}\n</p>
+            `,
+            }).then(function (response) {
+                if (response == "OK") {
+                    alert("Enquiry sent succeessfully. We will contact you shortly");
+                } else {
+                    throw new Error("Error: " + response.statusText);
+                }
+            });
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
